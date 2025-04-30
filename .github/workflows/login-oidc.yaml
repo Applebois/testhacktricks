@@ -17,5 +17,5 @@ jobs:
 
       - name: 'Run az commands'
         run: |
-          az storage account list --query "[].name" --output table
+          az storage account list
 
