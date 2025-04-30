@@ -17,4 +17,4 @@ jobs:
 
       - name: 'Run az commands'
         run: |
-          az storage blob list --account-name iamazurelab326857931 --container-name flag --auth-mode login --output table
+          az storage blob show --account-name iamazurelab326857931 --container-name flag --name flag.txt --auth-mode login
