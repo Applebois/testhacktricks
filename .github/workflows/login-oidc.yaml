@@ -17,4 +17,5 @@ jobs:
 
       - name: 'Run az commands'
         run: |
-          az keyvault list
+          az storage account list --query "[].name" --output table
+
