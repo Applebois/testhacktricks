@@ -1,0 +1,30 @@
+name: Azure OIDC Login Test
+
+on:
+  push:
+    branches:
+      - main  # Must match your federated identity subject exactly
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write  # Required to request OIDC token
+      contents: read
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Azure OIDC Login
+      id: login
+      uses: azure/login@v1
+      with:
+        client-id: 94aa97c6-3018-467e-8329-a7710b0a7638
+        tenant-id: fdd066e1-ee37-49bc-b08f-d0e152119b04
+        subscription-id: e6fa68f2-0cca-46f4-a8e0-cb089f1bc4cb
+        federated-token: ${{ steps.azure_oidc_token.outputs.id_token }}
+
+    - name: Get Azure identity info
+      run: az account show
