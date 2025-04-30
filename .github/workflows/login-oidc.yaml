@@ -17,5 +17,4 @@ jobs:
 
       - name: 'Run az commands'
         run: |
-          az storage account list
-
+          az storage container list --account-name iamazurelab326857931 --auth-mode login
